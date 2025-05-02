@@ -15,7 +15,7 @@ chmod +x "${INSTALLER_PATH}"
 echo "${EXPECTED_SHA256}  ${INSTALLER_PATH}" | sha256sum -c -
 
 # Install Nix
-"${INSTALLER_PATH}" install --no-confirm --no-start-daemon
+"${INSTALLER_PATH}" install --no-confirm -- --no-start-daemon
 
 # Clean up
 rm -f "${INSTALLER_PATH}"
