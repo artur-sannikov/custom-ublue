@@ -15,7 +15,7 @@ chmod +x "${INSTALLER_PATH}"
 echo "${EXPECTED_SHA256}  ${INSTALLER_PATH}" | sha256sum -c -
 
 # Install Nix
-"${INSTALLER_PATH}" install --no-confirm
+"${INSTALLER_PATH}" install --no-confirm --no-start-daemon
 
 # Clean up
 rm -f "${INSTALLER_PATH}"
@@ -38,10 +38,6 @@ dnf5 install -y libvirt libvirt-daemon-config-network libvirt-daemon-kvm \
 # dnf5 -y install package
 # Disable COPRs so they don't end up enabled on the final image:
 # dnf5 -y copr disable ublue-os/staging
-
-# Install nix
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix |
-    sh -s -- install --no-confirm
 
 #### Example for enabling a System Unit File
 
