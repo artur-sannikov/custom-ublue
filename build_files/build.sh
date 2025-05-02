@@ -20,6 +20,8 @@ dnf5 install -y libvirt libvirt-daemon-config-network libvirt-daemon-kvm \
 # Disable COPRs so they don't end up enabled on the final image:
 # dnf5 -y copr disable ublue-os/staging
 
+mkdir /nix
+
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
