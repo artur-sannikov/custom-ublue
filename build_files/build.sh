@@ -10,7 +10,7 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-dnf5 install -y alacritty tailscale wireguard-toos syncthing edk2-ovmf
+dnf5 install -y alacritty tailscale wireguard-tools syncthing edk2-ovmf
 
 dnf5 install -y libvirt libvirt-daemon-config-network libvirt-daemon-kvm \
     qemu-kvm virt-manager virt-viewer
