@@ -15,7 +15,7 @@ chmod +x "${INSTALLER_PATH}"
 echo "${EXPECTED_SHA256}  ${INSTALLER_PATH}" | sha256sum -c -
 
 # Install Nix
-"${INSTALLER_PATH}" install ostree --no-confirm
+"${INSTALLER_PATH}" install ostree --no-confirm --no-start-daemon --extra-conf "sandbox = false"
 
 # Clean up
 rm -f "${INSTALLER_PATH}"
