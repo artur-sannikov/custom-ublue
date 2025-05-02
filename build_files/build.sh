@@ -3,19 +3,19 @@
 set -ouex pipefail
 
 NIX_INSTALLER_VERSION="v3.4.1"
-INSTALLER_URL="https://github.com/determinateSystems/nix-installer/releases/download/${NIX_INSTALLER_VERSION}/nix-installer-x86_64-linux"
-INSTALLER_PATH="/tmp/nix-installer"
-EXPECTED_SHA256="b174ba0340f220ff8be63e8178177d5d46deff42c0ad88d66833f6ba2befbf86"
+INSTALLER_URL="https://install.determinate.systems/nix/tag/${NIX_INSTALLER_VERSION}"
+INSTALLER_PATH="/tmp/nix-installer.sh"
+EXPECTED_SHA256="7df0fa6567434afd2bc4070fc789c7f431bf6392090d69b4e1a4a1e13a181a66"
 
-# Download Nix Determinate Systems installer
-curl -fsSL -o "${INSTALLER_PATH}" "${INSTALLER_URL}"
+# Download Nix Determinate Systems installer scrpt
+curl --proto '=https' --tlsv1.2 -sSf -L -o "${INSTALLER_PATH}" "${INSTALLER_URL}"
 chmod +x "${INSTALLER_PATH}"
 
 # Verify the checksum
 echo "${EXPECTED_SHA256}  ${INSTALLER_PATH}" | sha256sum -c -
 
 # Install Nix
-"${INSTALLER_PATH}" install ostree --no-confirm --no-start-daemon --extra-conf "sandbox = false"
+"${INSTALLER_PATH}" install --no-confirm
 
 # Clean up
 rm -f "${INSTALLER_PATH}"
