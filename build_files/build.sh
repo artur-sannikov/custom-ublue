@@ -13,6 +13,13 @@ dnf5 install -y alacritty tailscale wireguard-tools syncthing edk2-ovmf
 dnf5 install -y libvirt libvirt-daemon-config-network libvirt-daemon-kvm \
     qemu-kvm virt-manager virt-viewer
 
+# Remove old tailscale from base image (it's out-of-date)
+dnf5 remove tailscale
+
+# Install tailscale according to official instructions
+dnf5 config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo
+dnf5 install tailscale
+
 # Use a COPR Example:
 #
 # dnf5 -y copr enable ublue-os/staging
@@ -26,3 +33,4 @@ mkdir /nix
 
 systemctl enable podman.socket
 systemctl enable libvirtd
+systemctl enable tailscaled
