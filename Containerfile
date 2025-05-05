@@ -1,7 +1,9 @@
 # Allow build scripts to be referenced without being copied into the final image
 FROM scratch AS ctx
 COPY build_files /
-COPY system_files /
+
+# Copy all files from current repo
+COPY / /
 # Base Image
 FROM quay.io/fedora-ostree-desktops/kinoite:42
 

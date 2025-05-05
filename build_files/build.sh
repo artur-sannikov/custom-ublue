@@ -6,7 +6,7 @@ set -ouex pipefail
 rsync -rvK /ctx/system_files/ /
 
 # Install tailscale
-dnf5 install tailscale
+dnf5 install -y tailscale
 
 # Install base packages
 dnf5 install -y alacritty wireguard-tools syncthing edk2-ovmf
